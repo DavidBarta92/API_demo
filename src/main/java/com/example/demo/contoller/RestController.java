@@ -17,6 +17,7 @@ import java.util.Date;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
+ // private String apiKey = {API_KEY};
   private RetrofitService retrofitService;
   private MovieService movieService;
   private UserService userService;
@@ -32,14 +33,14 @@ public class RestController {
   @GetMapping(value = "/movie/{id}")
   public ResponseEntity<?> all(@PathVariable Long id){
     Retrofit retrofit = retrofitService.build();
-    movieService = retrofit.create(movieService.getMovie(id));
+    movieService = retrofit.create(MovieService.class); //ebben nem vagyok biztos
     try {
-      Movie movie = movieDbAPIService.getMovie(id, );
+      Movie movie = (Movie) movieDbAPIService.getMovie(id, "082f50114a5eb60688e638e91e08df99", "imdb_id");
       movieService.save(movie);
       return ResponseEntity.status(200).body(movie);
     }
     catch(Exception e400){
-      return ResponseEntity.status(200).body(new ErrorMessage("Error"));
+      return ResponseEntity.status(400).body(new ErrorMessage("Error"));
     }
   }
 }

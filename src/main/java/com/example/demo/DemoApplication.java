@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.service.MovieDbAPIService;
 import com.example.demo.service.MovieService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,13 +15,7 @@ public class DemoApplication {
   }
 
   @Bean
-  public CommandLineRunner reddit(MovieService movieService) {
-    return args -> {
-    };
-  }
-
-  @Bean
-  MovieService articleService(){
+  MovieService movieService(){
     return new MovieService();
   }
 }
