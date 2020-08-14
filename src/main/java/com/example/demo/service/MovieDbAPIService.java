@@ -9,6 +9,8 @@ import retrofit2.http.Path;
 @Service
 public interface MovieDbAPIService {
 
-  @GET("find/")
-  Call<Movie> getMovie(Long id, String api_key, String external_source);
+  @GET("find/tt{id}?api_key=<api_key}&external_source={external_source}")
+  Call<Movie> getMovie(@Path("id") Long id,
+                       @Path("api_key")String api_key,
+                       @Path("external_source")String external_source);
 }

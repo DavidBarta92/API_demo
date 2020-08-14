@@ -7,21 +7,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import retrofit2.Call;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 @Service
 @Getter
 @Setter
 @NoArgsConstructor
-public class MovieService {
+public class MovieService{
+  private MovieDbAPIService movieDbAPIService;
+
   @Autowired
   private MovieRepository movieRepository;
-
   public MovieService(MovieRepository movieRepository) {
     this.movieRepository = movieRepository;
   }
 
-  public void save(Movie movie) {
+  public void saveMe(Movie movie) {
     this.movieRepository.save(movie);
   }
 }
