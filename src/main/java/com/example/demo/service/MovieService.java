@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import retrofit2.Call;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-@Service
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,6 +18,7 @@ public class MovieService{
 
   @Autowired
   private MovieRepository movieRepository;
+
   public MovieService(MovieRepository movieRepository) {
     this.movieRepository = movieRepository;
   }
